@@ -3,10 +3,10 @@ sudo: required
 services:
     - docker
 before_install:
-    - docker build -t ted/react-test -f ./client/Dockerfile.dev ./client
+    - docker build -t $USERNAME/react-test -f ./client/Dockerfile.dev ./client
 
 script:
-    - docker run -e CI=true ted/react-test npm test
+    - docker run -e CI=true $USERNAME/react-test npm test
 
 after_sucess:
     - docker build -t $USERNAME/multi-client ./client
